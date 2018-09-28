@@ -1,7 +1,11 @@
 package com.darryncampbell.datawedgekotlin
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
@@ -9,8 +13,6 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.ZoneId
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +20,15 @@ class MainActivity : AppCompatActivity() {
     private var scans: ArrayList<Scan> = arrayListOf();
     var adapter = ScanAdapter(this, scans)
     private val dwInterface = DataWedgeInterface();
+    private var versionOver65 = false
+    private val receiver = DataWedgeReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         listView?.adapter = adapter
+
     }
 
     override fun onNewIntent(intent: Intent)
@@ -64,5 +69,21 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //  Register broadcast receiver to listen for responses from DW API
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(DataWedgeInterface.DATAWEDGE_RETURN_ACTION)
+        intentFilter.addCategory(DataWedgeInterface.DATAWEDGE_RETURN_CATEGORY)
+        registerReceiver(receiver, intentFilter)
+
+        dwInterface.sendCommandString(this, DataWedgeInterface.DATAWEDGE_SEND_GET_VERSION, "")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(receiver)
     }
 }
