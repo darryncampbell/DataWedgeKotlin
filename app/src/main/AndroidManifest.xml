@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
@@ -25,14 +26,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-
+        <activity android:name=".ConfigurationActivity"
+            android:screenOrientation="portrait" />
         <receiver
-            android:name=".DataWedgeReceiver"
+            android:name=".DWReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
+
     </application>
 
 </manifest>

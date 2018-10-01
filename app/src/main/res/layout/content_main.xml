@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnScan"
         android:layout_width="0dp"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:layout_marginStart="8dp"
@@ -30,7 +30,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnScan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

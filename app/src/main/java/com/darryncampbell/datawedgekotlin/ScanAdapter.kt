@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
+//  Adapter to map Scan objects to the list in the MainActivity
 class ScanAdapter(private var activity: Activity, private var items: ArrayList<Scan>): BaseAdapter()
 {
     private class ViewHolder(row: View?)

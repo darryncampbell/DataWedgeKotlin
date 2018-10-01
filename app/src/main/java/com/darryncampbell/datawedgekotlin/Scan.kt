@@ -1,6 +1,4 @@
 package com.darryncampbell.datawedgekotlin
+import java.io.Serializable
 
-open class Scan(val data: String, val symbology: String, val dateTime: String)
-{
-
-}
+class Scan(val data: String, val symbology: String, val dateTime: String) : Serializable
