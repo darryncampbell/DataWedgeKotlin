@@ -23,6 +23,7 @@ DataWedge is a value-add of all Zebra Technologies devices (formally Symbol and 
 **You will only need to perform the below steps if your DataWedge version is below 6.5**
 
 If your configuration screen has the options grayed out, as shown below:
+
 ![Application](https://raw.githubusercontent.com/darryncampbell/DataWedgeKotlin/master/screenshots/application_pre_65.png)
 
 Then you will need to manually configure the DataWedge profile as follows:
@@ -34,6 +35,7 @@ Then you will need to manually configure the DataWedge profile as follows:
 * Intent delivery specified as "Send via startActivity"
  
 The following two screenshots should help you configure DataWedge correctly:
+
 ![DW App association](https://raw.githubusercontent.com/darryncampbell/DataWedgeKotlin/master/screenshots/datawedge_02.png)
 ![DW Intent configuration](https://raw.githubusercontent.com/darryncampbell/DataWedgeKotlin/master/screenshots/datawedge_03.png)
 
@@ -66,7 +68,7 @@ override fun onNewIntent(intent: Intent) {
         scans.add(0, currentScan)
     }
     adapter.notifyDataSetChanged()
-    }
+}
 ```
 
 The following code sends a specific command to the scanner (see the [DataWedge API](http://techdocs.zebra.com/datawedge/latest/guide/api/) for a full list of available commands).  
