@@ -232,13 +232,13 @@ class MainActivity : AppCompatActivity(), Observer, View.OnTouchListener {
                     MotionEvent.ACTION_DOWN ->
                     {
                         dwInterface.sendCommandString(applicationContext, DWInterface.DATAWEDGE_SEND_SET_SOFT_SCAN,
-                                "START_SCANNING")
+                                "TOGGLE_SCANNING")
                         return true
                     }
                     MotionEvent.ACTION_UP ->
                     {
-                        dwInterface.sendCommandString(applicationContext, DWInterface.DATAWEDGE_SEND_SET_SOFT_SCAN,
-                                "STOP_SCANNING")
+//                        dwInterface.sendCommandString(applicationContext, DWInterface.DATAWEDGE_SEND_SET_SOFT_SCAN,
+//                                "STOP_SCANNING")
                         return true
                     }
                 }
